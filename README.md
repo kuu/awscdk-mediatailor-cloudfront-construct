@@ -16,7 +16,7 @@ And then associates them by updating MediaTailor's settings:
 [![NPM](https://nodei.co/npm/awscdk-mediatailor-cloudfront-construct.png?mini=true)](https://nodei.co/npm/awscdk-mediatailor-cloudfront-construct/)
 
 ## Usage
-```
+```ts
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { MediaTailorWithCloudFront } from 'awscdk-mediatailor-cloudfront-construct';
@@ -49,4 +49,6 @@ export class ExampleStack extends cdk.Stack {
       exportName: cdk.Aws.STACK_NAME + "HLSPlaybackPrefix",
       description: "CloudFront distribution's host name",
     });
+  }
+}
 ```
