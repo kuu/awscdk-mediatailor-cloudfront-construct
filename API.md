@@ -361,6 +361,7 @@ const cloudFrontProps: CloudFrontProps = { ... }
 | --- | --- | --- |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.CloudFrontProps.property.mediaTailorEndpointUrl">mediaTailorEndpointUrl</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.CloudFrontProps.property.videoContentSourceUrl">videoContentSourceUrl</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#awscdk-mediatailor-cloudfront-construct.CloudFrontProps.property.adSegmentSourceUrl">adSegmentSourceUrl</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -378,6 +379,16 @@ public readonly mediaTailorEndpointUrl: string;
 
 ```typescript
 public readonly videoContentSourceUrl: string;
+```
+
+- *Type:* string
+
+---
+
+##### `adSegmentSourceUrl`<sup>Optional</sup> <a name="adSegmentSourceUrl" id="awscdk-mediatailor-cloudfront-construct.CloudFrontProps.property.adSegmentSourceUrl"></a>
+
+```typescript
+public readonly adSegmentSourceUrl: string;
 ```
 
 - *Type:* string
