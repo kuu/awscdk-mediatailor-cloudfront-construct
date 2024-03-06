@@ -15,6 +15,7 @@ import { Construct } from 'constructs';
 export interface CloudFrontProps {
   readonly videoContentSourceUrl: string;
   readonly mediaTailorEndpointUrl: string;
+  readonly adSegmentSourceUrl?: string;
 }
 
 export class CloudFront extends Construct {
@@ -23,6 +24,7 @@ export class CloudFront extends Construct {
   constructor(scope: Construct, id: string, {
     videoContentSourceUrl,
     mediaTailorEndpointUrl,
+    adSegmentSourceUrl,
   }: CloudFrontProps) {
 
     super(scope, id);
@@ -47,7 +49,9 @@ export class CloudFront extends Construct {
 
     // Create Transcoded Ad origin
     const transocdedAdOrigin = new HttpOrigin(
-      `segments.mediatailor.${Aws.REGION}.amazonaws.com`,
+      adSegmentSourceUrl
+        ? Fn.select(2, Fn.split('/', videoContentSourceUrl))
+        : `segments.mediatailor.${Aws.REGION}.amazonaws.com`,
       {
         originSslProtocols: [OriginSslPolicy.SSL_V3],
         protocolPolicy: OriginProtocolPolicy.HTTPS_ONLY,
