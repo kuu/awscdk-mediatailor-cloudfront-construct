@@ -85,7 +85,7 @@ export class CloudFront extends Construct {
           cachePolicy: CachePolicy.ELEMENTAL_MEDIA_PACKAGE,
           allowedMethods: AllowedMethods.ALLOW_ALL,
           viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-          originRequestPolicy: OriginRequestPolicy.ELEMENTAL_MEDIA_TAILOR,
+          originRequestPolicy: OriginRequestPolicy.CORS_S3_ORIGIN,
         },
         '/v1/segment/*': { // MediaTailor server-side tracking
           origin: mediaTailorOrigin,
