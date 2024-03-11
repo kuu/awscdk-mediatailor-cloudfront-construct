@@ -10,7 +10,7 @@ function removeFilename(url: string): string {
   if (lastSlash === -1) {
     return url;
   }
-  return url.substring(0, url.lastIndexOf('/'));
+  return url.substring(0, lastSlash + 1);
 }
 
 export interface MediaTailorWithCloudFrontProps {
@@ -24,16 +24,16 @@ export class MediaTailorWithCloudFront extends Construct {
   public readonly cf: CloudFront;
 
   constructor(scope: Construct, id: string, {
-    videoContentSourceUrl,
+    videoContentSourceUrl: sourceUrl,
     adDecisionServerUrl,
     slateAdUrl,
   }: MediaTailorWithCloudFrontProps) {
 
     super(scope, id);
 
-    const idDash = videoContentSourceUrl.endsWith('.mpd');
+    const idDash = sourceUrl.endsWith('.mpd');
 
-    videoContentSourceUrl = removeFilename(videoContentSourceUrl);
+    const videoContentSourceUrl = removeFilename(sourceUrl);
 
     // Create MediaTailor PlaybackConfig
     const emt = new MediaTailor(this, 'MediaTailor', {
