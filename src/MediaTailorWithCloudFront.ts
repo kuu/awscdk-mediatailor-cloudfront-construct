@@ -35,7 +35,7 @@ export class MediaTailorWithCloudFront extends Construct {
     videoContentSourceUrl = removeFilename(videoContentSourceUrl);
 
     // Create MediaTailor PlaybackConfig
-    const emt = new MediaTailor(this, `${id}-MediaTailor`, {
+    const emt = new MediaTailor(this, 'MediaTailor', {
       videoContentSourceUrl,
       adDecisionServerUrl,
       slateAdUrl,
@@ -46,7 +46,7 @@ export class MediaTailorWithCloudFront extends Construct {
       : emt.config.attrHlsConfigurationManifestEndpointPrefix;
 
     // Create CloudFront Distribution
-    const cf = new CloudFront(this, `${id}-CloudFront`, {
+    const cf = new CloudFront(this, 'CloudFront', {
       videoContentSourceUrl,
       mediaTailorEndpointUrl,
     });
@@ -54,7 +54,7 @@ export class MediaTailorWithCloudFront extends Construct {
     // Create AWS Custom Resource to setup MediaTailor's CDN configuration with CloudFront
     const contentPath = Fn.select(1, Fn.split('/out/', videoContentSourceUrl));
     const contentSegmentPrefix =`https://${cf.distribution.distributionDomainName}/out/${contentPath}`;
-    new AwsCustomResource(this, `${id}-AwsCustomResource`, {
+    new AwsCustomResource(this, 'AwsCustomResource', {
       onCreate: {
         service: 'MediaTailor',
         action: 'PutPlaybackConfiguration',
