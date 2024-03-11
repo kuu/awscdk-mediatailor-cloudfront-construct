@@ -1,3 +1,5 @@
+import * as crypto from 'crypto';
+
 import {
   Aws,
 } from 'aws-cdk-lib';
@@ -27,7 +29,7 @@ export class MediaTailor extends Construct {
 
     // Create EMT config
     this.config = new CfnPlaybackConfiguration(this, 'CfnPlaybackConfiguration', {
-      name: `${Aws.STACK_NAME}-${Date.now().toString()}`,
+      name: `${Aws.STACK_NAME}-${crypto.randomUUID()}`,
       videoContentSourceUrl,
       adDecisionServerUrl,
       slateAdUrl,

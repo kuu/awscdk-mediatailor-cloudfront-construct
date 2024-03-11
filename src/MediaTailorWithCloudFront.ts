@@ -1,3 +1,4 @@
+import * as crypto from 'crypto';
 import { Aws, Fn } from 'aws-cdk-lib';
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
@@ -69,7 +70,7 @@ export class MediaTailorWithCloudFront extends Construct {
             ContentSegmentUrlPrefix: contentSegmentPrefix,
           },
         },
-        physicalResourceId: PhysicalResourceId.of(Date.now().toString()),
+        physicalResourceId: PhysicalResourceId.of(crypto.randomUUID()),
       },
       //Will ignore any resource and use the assumedRoleArn as resource and 'sts:AssumeRole' for service:action
       policy: AwsCustomResourcePolicy.fromSdkCalls({
