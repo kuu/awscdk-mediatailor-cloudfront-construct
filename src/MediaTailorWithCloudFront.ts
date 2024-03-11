@@ -5,6 +5,10 @@ import { CloudFront } from './CloudFront';
 import { MediaTailor } from './MediaTailor';
 
 function removeFilename(url: string): string {
+  const lastSlash = url.lastIndexOf('/');
+  if (lastSlash === -1) {
+    return url;
+  }
   return url.substring(0, url.lastIndexOf('/'));
 }
 
