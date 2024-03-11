@@ -24,36 +24,36 @@ export class MediaTailorWithCloudFront extends Construct {
   public readonly cf: CloudFront;
 
   constructor(scope: Construct, id: string, {
-    videoContentSourceUrl: sourceUrl,
+    videoContentSourceUrl,
     adDecisionServerUrl,
     slateAdUrl,
   }: MediaTailorWithCloudFrontProps) {
 
     super(scope, id);
 
-    const idDash = sourceUrl.endsWith('.mpd');
+    const isDash = videoContentSourceUrl.endsWith('.mpd');
 
-    const videoContentSourceUrl = removeFilename(sourceUrl);
+    const contentSourceUrlPrefix = removeFilename(videoContentSourceUrl);
 
     // Create MediaTailor PlaybackConfig
     const emt = new MediaTailor(this, 'MediaTailor', {
-      videoContentSourceUrl,
+      videoContentSourceUrl: contentSourceUrlPrefix,
       adDecisionServerUrl,
       slateAdUrl,
     });
 
-    const mediaTailorEndpointUrl = idDash
+    const mediaTailorEndpointUrl = isDash
       ? emt.config.attrDashConfigurationManifestEndpointPrefix
       : emt.config.attrHlsConfigurationManifestEndpointPrefix;
 
     // Create CloudFront Distribution
     const cf = new CloudFront(this, 'CloudFront', {
-      videoContentSourceUrl,
+      videoContentSourceUrl: contentSourceUrlPrefix,
       mediaTailorEndpointUrl,
     });
 
     // Create AWS Custom Resource to setup MediaTailor's CDN configuration with CloudFront
-    const contentPath = Fn.select(1, Fn.split('/out/', videoContentSourceUrl));
+    const contentPath = Fn.select(1, Fn.split('/out/', contentSourceUrlPrefix));
     const contentSegmentPrefix =`https://${cf.distribution.distributionDomainName}/out/${contentPath}`;
     new AwsCustomResource(this, 'AwsCustomResource', {
       onCreate: {
