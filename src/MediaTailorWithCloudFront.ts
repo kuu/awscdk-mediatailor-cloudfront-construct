@@ -1,17 +1,9 @@
 import * as crypto from 'crypto';
-import { Aws, Fn, Lazy } from 'aws-cdk-lib';
+import { Aws, Fn } from 'aws-cdk-lib';
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
 import { CloudFront } from './CloudFront';
 import { MediaTailor } from './MediaTailor';
-
-function removeFilename(url: string): string {
-  const lastSlash = url.lastIndexOf('/');
-  if (lastSlash === -1) {
-    return url;
-  }
-  return url.substring(0, lastSlash + 1);
-}
 
 export interface MediaTailorWithCloudFrontProps {
   readonly videoContentSourceUrl: string; // The URL of the MediaPackage endpoint used by MediaTailor as the content origin.
@@ -35,11 +27,7 @@ export class MediaTailorWithCloudFront extends Construct {
 
     // Create MediaTailor PlaybackConfig
     const emt = new MediaTailor(this, 'MediaTailor', {
-      videoContentSourceUrl: Lazy.string({
-        produce() {
-          return removeFilename(videoContentSourceUrl);
-        },
-      }),
+      videoContentSourceUrl,
       adDecisionServerUrl,
       slateAdUrl,
     });
@@ -50,11 +38,7 @@ export class MediaTailorWithCloudFront extends Construct {
 
     // Create CloudFront Distribution
     const cf = new CloudFront(this, 'CloudFront', {
-      videoContentSourceUrl: Lazy.string({
-        produce() {
-          return removeFilename(videoContentSourceUrl);
-        },
-      }),
+      videoContentSourceUrl,
       mediaTailorEndpointUrl,
     });
 
