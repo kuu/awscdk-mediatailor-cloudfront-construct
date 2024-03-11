@@ -33,15 +33,13 @@ export class MediaTailorWithCloudFront extends Construct {
 
     const isDash = videoContentSourceUrl.endsWith('.mpd');
 
-    const contentSourceUrlPrefix = Lazy.string({
-      produce() {
-        return removeFilename(videoContentSourceUrl);
-      },
-    });
-
     // Create MediaTailor PlaybackConfig
     const emt = new MediaTailor(this, 'MediaTailor', {
-      videoContentSourceUrl: contentSourceUrlPrefix,
+      videoContentSourceUrl: Lazy.string({
+        produce() {
+          return removeFilename(videoContentSourceUrl);
+        },
+      }),
       adDecisionServerUrl,
       slateAdUrl,
     });
@@ -52,12 +50,16 @@ export class MediaTailorWithCloudFront extends Construct {
 
     // Create CloudFront Distribution
     const cf = new CloudFront(this, 'CloudFront', {
-      videoContentSourceUrl: contentSourceUrlPrefix,
+      videoContentSourceUrl: Lazy.string({
+        produce() {
+          return removeFilename(videoContentSourceUrl);
+        },
+      }),
       mediaTailorEndpointUrl,
     });
 
     // Create AWS Custom Resource to setup MediaTailor's CDN configuration with CloudFront
-    const contentPath = Fn.select(1, Fn.split('/out/', contentSourceUrlPrefix));
+    const contentPath = Fn.select(1, Fn.split('/out/', videoContentSourceUrl));
     const contentSegmentPrefix =`https://${cf.distribution.distributionDomainName}/out/${contentPath}`;
     new AwsCustomResource(this, 'AwsCustomResource', {
       onCreate: {
