@@ -59,7 +59,7 @@ export class CloudFront extends Construct {
     );
 
     // Create CloudFront distribution
-    const distribution = new Distribution(this, `${id}-Distribution`, {
+    const distribution = new Distribution(this, 'Distribution', {
       comment: `${Aws.STACK_NAME} - CloudFront distribution for MediaTailor`,
       defaultRootObject: '',
       minimumProtocolVersion: SecurityPolicyProtocol.TLS_V1_2016,

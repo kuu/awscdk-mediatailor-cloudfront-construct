@@ -26,8 +26,8 @@ export class MediaTailor extends Construct {
     super(scope, id);
 
     // Create EMT config
-    this.config = new CfnPlaybackConfiguration(this, `${id}-CfnPlaybackConfiguration`, {
-      name: `${Aws.STACK_NAME}-${id}-CfnPlaybackConfiguration`,
+    this.config = new CfnPlaybackConfiguration(this, 'CfnPlaybackConfiguration', {
+      name: `${Aws.STACK_NAME}-CfnPlaybackConfiguration-${Date.now().toString()}`,
       videoContentSourceUrl,
       adDecisionServerUrl,
       slateAdUrl,
