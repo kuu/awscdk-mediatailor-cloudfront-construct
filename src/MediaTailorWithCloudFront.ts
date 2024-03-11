@@ -1,5 +1,5 @@
 import * as crypto from 'crypto';
-import { Aws, Fn } from 'aws-cdk-lib';
+import { Aws, Fn, Lazy } from 'aws-cdk-lib';
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
 import { CloudFront } from './CloudFront';
@@ -33,7 +33,11 @@ export class MediaTailorWithCloudFront extends Construct {
 
     const isDash = videoContentSourceUrl.endsWith('.mpd');
 
-    const contentSourceUrlPrefix = removeFilename(videoContentSourceUrl);
+    const contentSourceUrlPrefix = Lazy.string({
+      produce() {
+        return removeFilename(videoContentSourceUrl);
+      },
+    });
 
     // Create MediaTailor PlaybackConfig
     const emt = new MediaTailor(this, 'MediaTailor', {
