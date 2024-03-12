@@ -43,7 +43,7 @@ export class MediaTailorWithCloudFront extends Construct {
     });
 
     // Create AWS Custom Resource to setup MediaTailor's CDN configuration with CloudFront
-    const contentPath = Fn.select(1, Fn.split('/out/', videoContentSourceUrl));
+    const contentPath = Fn.select(1, Fn.split('/out/', emt.config.videoContentSourceUrl));
     const contentSegmentPrefix =`https://${cf.distribution.distributionDomainName}/out/${contentPath}`;
     new AwsCustomResource(this, 'AwsCustomResource', {
       onCreate: {
