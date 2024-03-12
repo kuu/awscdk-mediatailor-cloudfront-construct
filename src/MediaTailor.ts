@@ -1,5 +1,5 @@
 import * as crypto from 'crypto';
-import { Lazy } from 'aws-cdk-lib';
+import { Fn, Lazy } from 'aws-cdk-lib';
 import {
   CfnPlaybackConfiguration,
 } from 'aws-cdk-lib/aws-mediatailor';
@@ -8,10 +8,12 @@ import { Construct } from 'constructs';
 
 function removeFilename(url: string): string {
   const lastSlash = url.lastIndexOf('/');
-  if (lastSlash === -1) {
+  if (lastSlash === -1 || url.length === 0 || lastSlash === url.length - 1) {
     return url;
   }
-  return url.substring(0, lastSlash + 1);
+  const arr = Fn.split('/', url);
+  const fileName = Fn.select(arr.length - 1, arr);
+  return Fn.split(fileName, url)[0];
 }
 
 export interface MediaTailorProps {
