@@ -7,6 +7,7 @@ export interface MediaTailorProps {
   readonly videoContentSourceUrl: string;
   readonly adDecisionServerUrl: string;
   readonly slateAdUrl?: string;
+  readonly configurationAliases?: object;
 }
 
 export class MediaTailor extends Construct {
@@ -16,18 +17,18 @@ export class MediaTailor extends Construct {
     videoContentSourceUrl,
     adDecisionServerUrl,
     slateAdUrl,
+    configurationAliases,
   }: MediaTailorProps) {
 
     super(scope, id);
 
-    const arr = Fn.split('/', videoContentSourceUrl);
-
     // Create EMT config
     this.config = new CfnPlaybackConfiguration(this, 'CfnPlaybackConfiguration', {
       name: `${crypto.randomUUID()}`,
-      videoContentSourceUrl: `https://${Fn.select(2, arr)}/${Fn.select(3, arr)}/${Fn.select(4, arr)}/${Fn.select(5, arr)}/`, // Ugly
+      videoContentSourceUrl: `https://${Fn.select(2, Fn.split('/', videoContentSourceUrl))}/out/v1/`, // Assuming MediaPackage endpoint
       adDecisionServerUrl,
       slateAdUrl,
+      configurationAliases,
     });
   }
 }

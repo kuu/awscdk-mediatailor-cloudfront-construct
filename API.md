@@ -411,6 +411,7 @@ const mediaTailorProps: MediaTailorProps = { ... }
 | --- | --- | --- |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorProps.property.adDecisionServerUrl">adDecisionServerUrl</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorProps.property.videoContentSourceUrl">videoContentSourceUrl</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorProps.property.configurationAliases">configurationAliases</a></code> | <code>object</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorProps.property.slateAdUrl">slateAdUrl</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -432,6 +433,16 @@ public readonly videoContentSourceUrl: string;
 ```
 
 - *Type:* string
+
+---
+
+##### `configurationAliases`<sup>Optional</sup> <a name="configurationAliases" id="awscdk-mediatailor-cloudfront-construct.MediaTailorProps.property.configurationAliases"></a>
+
+```typescript
+public readonly configurationAliases: object;
+```
+
+- *Type:* object
 
 ---
 
@@ -461,6 +472,7 @@ const mediaTailorWithCloudFrontProps: MediaTailorWithCloudFrontProps = { ... }
 | --- | --- | --- |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adDecisionServerUrl">adDecisionServerUrl</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.videoContentSourceUrl">videoContentSourceUrl</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.configurationAliases">configurationAliases</a></code> | <code>object</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.slateAdUrl">slateAdUrl</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -482,6 +494,16 @@ public readonly videoContentSourceUrl: string;
 ```
 
 - *Type:* string
+
+---
+
+##### `configurationAliases`<sup>Optional</sup> <a name="configurationAliases" id="awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.configurationAliases"></a>
+
+```typescript
+public readonly configurationAliases: object;
+```
+
+- *Type:* object
 
 ---
 
