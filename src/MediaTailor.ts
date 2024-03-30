@@ -22,10 +22,15 @@ export class MediaTailor extends Construct {
 
     super(scope, id);
 
+    if (videoContentSourceUrl.includes('/out/vi/')) {
+      // MediaPackage endpoint
+      videoContentSourceUrl = `https://${Fn.select(2, Fn.split('/', videoContentSourceUrl))}/out/v1/`;
+    }
+
     // Create EMT config
     this.config = new CfnPlaybackConfiguration(this, 'CfnPlaybackConfiguration', {
       name: `${crypto.randomUUID()}`,
-      videoContentSourceUrl: `https://${Fn.select(2, Fn.split('/', videoContentSourceUrl))}/out/v1/`, // Assuming MediaPackage endpoint
+      videoContentSourceUrl,
       adDecisionServerUrl,
       slateAdUrl,
       configurationAliases,

@@ -305,8 +305,8 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFront.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFront.property.cf">cf</a></code> | <code><a href="#awscdk-mediatailor-cloudfront-construct.CloudFront">CloudFront</a></code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFront.property.emt">emt</a></code> | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailor">MediaTailor</a></code> | *No description.* |
+| <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFront.property.cf">cf</a></code> | <code><a href="#awscdk-mediatailor-cloudfront-construct.CloudFront">CloudFront</a></code> | *No description.* |
 
 ---
 
@@ -322,16 +322,6 @@ The tree node.
 
 ---
 
-##### `cf`<sup>Required</sup> <a name="cf" id="awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFront.property.cf"></a>
-
-```typescript
-public readonly cf: CloudFront;
-```
-
-- *Type:* <a href="#awscdk-mediatailor-cloudfront-construct.CloudFront">CloudFront</a>
-
----
-
 ##### `emt`<sup>Required</sup> <a name="emt" id="awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFront.property.emt"></a>
 
 ```typescript
@@ -339,6 +329,16 @@ public readonly emt: MediaTailor;
 ```
 
 - *Type:* <a href="#awscdk-mediatailor-cloudfront-construct.MediaTailor">MediaTailor</a>
+
+---
+
+##### `cf`<sup>Optional</sup> <a name="cf" id="awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFront.property.cf"></a>
+
+```typescript
+public readonly cf: CloudFront;
+```
+
+- *Type:* <a href="#awscdk-mediatailor-cloudfront-construct.CloudFront">CloudFront</a>
 
 ---
 
@@ -470,20 +470,13 @@ const mediaTailorWithCloudFrontProps: MediaTailorWithCloudFrontProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adDecisionServerUrl">adDecisionServerUrl</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.videoContentSourceUrl">videoContentSourceUrl</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adDecisionFunction">adDecisionFunction</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | *No description.* |
+| <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adDecisionFunctionApiPath">adDecisionFunctionApiPath</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adDecisionServerUrl">adDecisionServerUrl</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.configurationAliases">configurationAliases</a></code> | <code>object</code> | *No description.* |
+| <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.skipCloudFront">skipCloudFront</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.slateAdUrl">slateAdUrl</a></code> | <code>string</code> | *No description.* |
-
----
-
-##### `adDecisionServerUrl`<sup>Required</sup> <a name="adDecisionServerUrl" id="awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adDecisionServerUrl"></a>
-
-```typescript
-public readonly adDecisionServerUrl: string;
-```
-
-- *Type:* string
 
 ---
 
@@ -497,6 +490,36 @@ public readonly videoContentSourceUrl: string;
 
 ---
 
+##### `adDecisionFunction`<sup>Optional</sup> <a name="adDecisionFunction" id="awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adDecisionFunction"></a>
+
+```typescript
+public readonly adDecisionFunction: IFunction;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.IFunction
+
+---
+
+##### `adDecisionFunctionApiPath`<sup>Optional</sup> <a name="adDecisionFunctionApiPath" id="awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adDecisionFunctionApiPath"></a>
+
+```typescript
+public readonly adDecisionFunctionApiPath: string;
+```
+
+- *Type:* string
+
+---
+
+##### `adDecisionServerUrl`<sup>Optional</sup> <a name="adDecisionServerUrl" id="awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adDecisionServerUrl"></a>
+
+```typescript
+public readonly adDecisionServerUrl: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `configurationAliases`<sup>Optional</sup> <a name="configurationAliases" id="awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.configurationAliases"></a>
 
 ```typescript
@@ -504,6 +527,16 @@ public readonly configurationAliases: object;
 ```
 
 - *Type:* object
+
+---
+
+##### `skipCloudFront`<sup>Optional</sup> <a name="skipCloudFront" id="awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.skipCloudFront"></a>
+
+```typescript
+public readonly skipCloudFront: boolean;
+```
+
+- *Type:* boolean
 
 ---
 
