@@ -1,6 +1,5 @@
 import * as crypto from 'crypto';
-import * as path from 'path';
-import { Aws } from 'aws-cdk-lib';
+import { Aws, Fn } from 'aws-cdk-lib';
 import { LambdaRestApi } from 'aws-cdk-lib/aws-apigateway';
 import { IFunction } from 'aws-cdk-lib/aws-lambda';
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from 'aws-cdk-lib/custom-resources';
@@ -38,7 +37,7 @@ export class MediaTailorWithCloudFront extends Construct {
       const api = new LambdaRestApi(this, 'ApGateway', {
         handler: adDecisionFunction,
       });
-      adDecisionServerUrl = path.join(api.url, adDecisionFunctionApiPath);
+      adDecisionServerUrl = Fn.join('', [api.url, adDecisionFunctionApiPath]);
     }
 
     if (!adDecisionServerUrl) {
