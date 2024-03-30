@@ -31,9 +31,13 @@ export class ExampleStack extends cdk.Stack {
 
     // Create MediaTailor with CloudFront
     const res = new MediaTailorWithCloudFront(this, 'MediaTailorWithCloudFront', {
-      videoContentSourceUrl,
-      adDecisionServerUrl,
-      slateAdUrl,
+      videoContentSourceUrl, // (required) The origin URL
+      adDecisionServerUrl, // (optional) The ad decision server URL
+      slateAdUrl, // (optional) The URL of the slate video file
+      // configurationAliases, // (optional) The configuration aliases used by MediaTailor
+      // adDecisionFunction, // (optional) Instead of adDecisionServerUrl, you can specify a Lambda function that returns VAST/VMAP
+      // adDecisionFunctionApiPath, // (optional) The API path (including query strings) used by MediaTailor for invoking the Lambda function
+      // skipCloudFront, // (optional) Skip the CloudFront setup (default = false)
     });
 
     // You can access MediaTailor playback configuration attributes via `emt.config`
