@@ -22,7 +22,7 @@ export class MediaTailor extends Construct {
 
     super(scope, id);
 
-    if (videoContentSourceUrl.includes('/out/vi/')) {
+    if (videoContentSourceUrl.includes('/out/v1/')) {
       // MediaPackage endpoint
       videoContentSourceUrl = `https://${Fn.select(2, Fn.split('/', videoContentSourceUrl))}/out/v1/`;
     }
