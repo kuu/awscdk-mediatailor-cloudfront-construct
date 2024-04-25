@@ -21,10 +21,9 @@ export class MediaTailor extends Construct {
   }: MediaTailorProps) {
 
     super(scope, id);
-
-    if (videoContentSourceUrl.includes('/out/v1/')) {
+    if (Fn.select(3, Fn.split('/', videoContentSourceUrl)) == 'out' && Fn.select(4, Fn.split('/', videoContentSourceUrl)) == 'v1') {
       // MediaPackage endpoint
-      videoContentSourceUrl = `https://${Fn.select(2, Fn.split('/', videoContentSourceUrl))}/out/v1/`;
+      videoContentSourceUrl = `https://${Fn.parseDomainName(videoContentSourceUrl)}/out/v1/`;
     }
 
     // Create EMT config
