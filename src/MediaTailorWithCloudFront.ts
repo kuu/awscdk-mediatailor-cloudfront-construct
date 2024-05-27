@@ -15,6 +15,7 @@ export interface MediaTailorWithCloudFrontProps {
   readonly adDecisionFunction?: IFunction; // The Lambda function used internally by MediaTailor as the ADS.
   readonly adDecisionFunctionApiPath?: string; // The API path (including query strings) used for accessing the Lambda function.
   readonly skipCloudFront?: boolean; // Skip CloudFront setup.
+  readonly adInsertionMode?: 'STITCHED_ONLY' | 'PLAYER_SELECT'; // Whether players can use stitched or guided ad insertion
 }
 
 export class MediaTailorWithCloudFront extends Construct {
@@ -29,6 +30,7 @@ export class MediaTailorWithCloudFront extends Construct {
     adDecisionFunction,
     adDecisionFunctionApiPath = '',
     skipCloudFront = false,
+    adInsertionMode = 'STITCHED_ONLY',
   }: MediaTailorWithCloudFrontProps) {
 
     super(scope, id);
@@ -77,6 +79,7 @@ export class MediaTailorWithCloudFront extends Construct {
             AdSegmentUrlPrefix: `https://${this.cf.distribution.distributionDomainName}`,
             ContentSegmentUrlPrefix: `https://${this.cf.distribution.distributionDomainName}/out/v1`,
           },
+          InsertionMode: adInsertionMode,
         },
         physicalResourceId: PhysicalResourceId.of(crypto.randomUUID()),
       },
