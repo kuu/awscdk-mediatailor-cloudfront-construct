@@ -31,7 +31,7 @@ export class ExampleStack extends cdk.Stack {
 
     // Create MediaTailor with CloudFront
     const res = new MediaTailorWithCloudFront(this, 'MediaTailorWithCloudFront', {
-      videoContentSourceUrl, // (required) The origin URL
+      videoContentSourceUrl, // (required) The origin URL (assuming MediaPackage endpoint)
       adDecisionServerUrl, // (optional) The ad decision server URL
       slateAdUrl, // (optional) The URL of the slate video file
       // configurationAliases, // (optional) The configuration aliases used by MediaTailor
