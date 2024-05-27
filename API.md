@@ -474,6 +474,7 @@ const mediaTailorWithCloudFrontProps: MediaTailorWithCloudFrontProps = { ... }
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adDecisionFunction">adDecisionFunction</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adDecisionFunctionApiPath">adDecisionFunctionApiPath</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adDecisionServerUrl">adDecisionServerUrl</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adInsertionMode">adInsertionMode</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.configurationAliases">configurationAliases</a></code> | <code>object</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.skipCloudFront">skipCloudFront</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.slateAdUrl">slateAdUrl</a></code> | <code>string</code> | *No description.* |
@@ -514,6 +515,16 @@ public readonly adDecisionFunctionApiPath: string;
 
 ```typescript
 public readonly adDecisionServerUrl: string;
+```
+
+- *Type:* string
+
+---
+
+##### `adInsertionMode`<sup>Optional</sup> <a name="adInsertionMode" id="awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adInsertionMode"></a>
+
+```typescript
+public readonly adInsertionMode: string;
 ```
 
 - *Type:* string
