@@ -39,6 +39,7 @@ export class ExampleStack extends cdk.Stack {
       // adDecisionFunctionApiPath, // (optional) The API path (including query strings) used by MediaTailor for invoking the Lambda function
       // skipCloudFront, // (optional) Skip the CloudFront setup (default = false)
       // adInsertionMode, // (optional) Whether players can use stitched or guided ad insertion (default = 'STITCHED_ONLY')
+      // prerollAdUrl, // (optional) The URL of the preroll ad
     });
 
     // You can access MediaTailor playback configuration attributes via `emt.config`
