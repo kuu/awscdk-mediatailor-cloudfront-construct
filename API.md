@@ -412,6 +412,7 @@ const mediaTailorProps: MediaTailorProps = { ... }
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorProps.property.adDecisionServerUrl">adDecisionServerUrl</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorProps.property.videoContentSourceUrl">videoContentSourceUrl</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorProps.property.configurationAliases">configurationAliases</a></code> | <code>object</code> | *No description.* |
+| <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorProps.property.prerollAdUrl">prerollAdUrl</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorProps.property.slateAdUrl">slateAdUrl</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -446,6 +447,16 @@ public readonly configurationAliases: object;
 
 ---
 
+##### `prerollAdUrl`<sup>Optional</sup> <a name="prerollAdUrl" id="awscdk-mediatailor-cloudfront-construct.MediaTailorProps.property.prerollAdUrl"></a>
+
+```typescript
+public readonly prerollAdUrl: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `slateAdUrl`<sup>Optional</sup> <a name="slateAdUrl" id="awscdk-mediatailor-cloudfront-construct.MediaTailorProps.property.slateAdUrl"></a>
 
 ```typescript
@@ -476,6 +487,7 @@ const mediaTailorWithCloudFrontProps: MediaTailorWithCloudFrontProps = { ... }
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adDecisionServerUrl">adDecisionServerUrl</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.adInsertionMode">adInsertionMode</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.configurationAliases">configurationAliases</a></code> | <code>object</code> | *No description.* |
+| <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.prerollAdUrl">prerollAdUrl</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.skipCloudFront">skipCloudFront</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.slateAdUrl">slateAdUrl</a></code> | <code>string</code> | *No description.* |
 
@@ -538,6 +550,16 @@ public readonly configurationAliases: object;
 ```
 
 - *Type:* object
+
+---
+
+##### `prerollAdUrl`<sup>Optional</sup> <a name="prerollAdUrl" id="awscdk-mediatailor-cloudfront-construct.MediaTailorWithCloudFrontProps.property.prerollAdUrl"></a>
+
+```typescript
+public readonly prerollAdUrl: string;
+```
+
+- *Type:* string
 
 ---
 
