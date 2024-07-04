@@ -2,9 +2,9 @@ import { awscdk } from 'projen';
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Kuu Miyazaki',
   authorAddress: 'miyazaqui@gmail.com',
-  cdkVersion: '2.130.0',
+  cdkVersion: '2.147.3',
   defaultReleaseBranch: 'main',
-  jsiiVersion: '~5.2.0',
+  jsiiVersion: '~5.4.25',
   name: 'awscdk-mediatailor-cloudfront-construct',
   projenrcTs: true,
   repositoryUrl: 'https://github.com/kuu/awscdk-mediatailor-cloudfront-construct.git',
