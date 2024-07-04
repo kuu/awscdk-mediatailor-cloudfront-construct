@@ -4,7 +4,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   authorAddress: 'miyazaqui@gmail.com',
   cdkVersion: '2.130.0',
   defaultReleaseBranch: 'main',
-  jsiiVersion: '~5.2.0',
+  jsiiVersion: '~5.3',
   name: 'awscdk-mediatailor-cloudfront-construct',
   projenrcTs: true,
   repositoryUrl: 'https://github.com/kuu/awscdk-mediatailor-cloudfront-construct.git',

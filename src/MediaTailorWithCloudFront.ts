@@ -16,6 +16,7 @@ export interface MediaTailorWithCloudFrontProps {
   readonly adDecisionFunctionApiPath?: string; // The API path (including query strings) used for accessing the Lambda function.
   readonly skipCloudFront?: boolean; // Skip CloudFront setup.
   readonly adInsertionMode?: 'STITCHED_ONLY' | 'PLAYER_SELECT'; // Whether players can use stitched or guided ad insertion
+  readonly prerollAdUrl?: string; // The URL of the video file used by MediaTailor as the preroll.
 }
 
 export class MediaTailorWithCloudFront extends Construct {
@@ -31,6 +32,7 @@ export class MediaTailorWithCloudFront extends Construct {
     adDecisionFunctionApiPath = '',
     skipCloudFront = false,
     adInsertionMode = 'STITCHED_ONLY',
+    prerollAdUrl,
   }: MediaTailorWithCloudFrontProps) {
 
     super(scope, id);
@@ -52,6 +54,7 @@ export class MediaTailorWithCloudFront extends Construct {
       adDecisionServerUrl,
       slateAdUrl,
       configurationAliases,
+      prerollAdUrl,
     });
 
     if (skipCloudFront) {

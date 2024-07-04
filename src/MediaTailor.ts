@@ -8,6 +8,7 @@ export interface MediaTailorProps {
   readonly adDecisionServerUrl: string;
   readonly slateAdUrl?: string;
   readonly configurationAliases?: object;
+  readonly prerollAdUrl?: string;
 }
 
 export class MediaTailor extends Construct {
@@ -18,6 +19,7 @@ export class MediaTailor extends Construct {
     adDecisionServerUrl,
     slateAdUrl,
     configurationAliases,
+    prerollAdUrl,
   }: MediaTailorProps) {
 
     super(scope, id);
@@ -31,6 +33,9 @@ export class MediaTailor extends Construct {
       adDecisionServerUrl,
       slateAdUrl,
       configurationAliases,
+      livePreRollConfiguration: {
+        adDecisionServerUrl: prerollAdUrl,
+      },
     });
   }
 }
