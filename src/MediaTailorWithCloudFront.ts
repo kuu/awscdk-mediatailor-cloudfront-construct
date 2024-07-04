@@ -77,6 +77,9 @@ export class MediaTailorWithCloudFront extends Construct {
           Name: this.emt.config.name,
           VideoContentSourceUrl: this.emt.config.videoContentSourceUrl,
           AdDecisionServerUrl: this.emt.config.adDecisionServerUrl,
+          LivePreRollAdConfiguration: {
+            AdDecisionServerUrl: prerollAdUrl,
+          },
           SlateAdUrl: this.emt.config.slateAdUrl,
           CdnConfiguration: {
             AdSegmentUrlPrefix: `https://${this.cf.distribution.distributionDomainName}`,
